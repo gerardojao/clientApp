@@ -6,6 +6,7 @@ import Welcome from '../Pages/Welcome';
 import Home from '../Pages/Home';
 import About from '../Pages/About';
 
+
 function App() {
     const [dataToEdit, setDataToEdit] = useState(null)
     const [user, setUser] = useState({

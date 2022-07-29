@@ -16,7 +16,7 @@ const Register = ({dataToEdit, setDataToEdit, user, setUser}) => {
         password: "",
         email: ""
     })
-console.log(user);
+console.log(user2);
     const handleChange2 = (e) => {
         const { name, value } = e.target
         setUser(prevState => {

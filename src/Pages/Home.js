@@ -11,7 +11,9 @@ export default function Home({dataToEdit, setDataToEdit , user, setUser}) {
     const [loading, setLoading] = useState(true)
     const [busqueda, setBusqueda] = useState("");
     const [data, setData] = useState([]);
-   
+    const [user2, setUser2] = useState([]);
+
+
     const navigate = useNavigate();
 
     const peticionGet = async () => {
@@ -19,7 +21,7 @@ export default function Home({dataToEdit, setDataToEdit , user, setUser}) {
             .then(res => {
                 setLoading(false)
                 setData(res.data.data)
-                //setUser(res.data.data)
+                setUser2(res.data.data)
             }).catch(err => {
                 console.log(err);
             })
@@ -40,13 +42,10 @@ export default function Home({dataToEdit, setDataToEdit , user, setUser}) {
     }
 
     const handleChange = e => {
-        setBusqueda(e.target.value)
-        filter(e.target.value)
+        setBusqueda(e.target.value)      
     }
 
-    const filter = term => setData(user.filter(item => (item.username.toString().toLowerCase().includes(term.toLowerCase())) && item));
-
-
+    let results = !busqueda ? data : data.filter(item=>item.username.toLowerCase().includes(busqueda.toLocaleLowerCase()))
 
       const selectUser = user => {
        navigate("/register")
@@ -69,7 +68,7 @@ export default function Home({dataToEdit, setDataToEdit , user, setUser}) {
         <div className="App">
             <br /><br />
             <button className="btn btn-success mb-4" onClick={() => insertar()}>Insertar nuevo Elemento</button><br />
-            <button className="btn btn-primary mb-4" onClick={() => navigate("/login")}>Inicia Sesión</button>
+            {/* <button className="btn btn-primary mb-4" onClick={() => navigate("/login")}>Inicia Sesión</button> */}
             <div className="containerInput">
                 <input
                     className="form-control inputBuscar"
@@ -83,7 +82,7 @@ export default function Home({dataToEdit, setDataToEdit , user, setUser}) {
             <br />
             {loading 
           ? <Loader /> 
-          :<table className="table table-bordered">
+          :<table style={{"textAlign":"center"}}className="table table-bordered">
                 <thead >
                     <tr>
                         <th>ID</th>
@@ -95,7 +94,7 @@ export default function Home({dataToEdit, setDataToEdit , user, setUser}) {
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map(user => (
+                    {results.map(user => (
                      
                         <tr key={user.id}>
                             <td>{user.id}</td>
