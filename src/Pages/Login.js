@@ -51,14 +51,17 @@ const Login = ({dataToEdit, setDataToEdit}) => {
         //         else console.log("Email format incorrect")
                
         //     })
-                    try {
-                          await supabase.auth.signIn({
-                                 email
-                                        })
-                                        alert("Código enviado al correo: "+ email)
-                    } catch (error) {
-                        console.error(error)
-                    }
+        try {
+             await supabase.auth.signIn({
+                    email
+            },
+             {
+                    redirectTo:"https://userlogin.vercel.app/home"
+             })
+             alert("Código enviado al correo: "+ email)
+         } catch (error) {
+              console.error(error)
+         }
 
     }
     const registro = () => {
