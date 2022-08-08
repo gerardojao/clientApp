@@ -9,14 +9,13 @@ const Register = ({dataToEdit, setDataToEdit, user, setUser}) => {
     const navigate = useNavigate();
     const [data, setData] = useState([])
     const [user2, setUser2] = useState({
-        id:"",
-        firstName: "",
-        lastName: "",
-        username: "",
-        password: "",
-        email: ""
+        Id:"",
+        FirstName: "",
+        LastName: "",
+        UserName: "",
+        Email: ""
     })
-console.log(user2);
+
     const handleChange2 = (e) => {
         const { name, value } = e.target
         setUser(prevState => {
@@ -34,16 +33,18 @@ console.log(user2);
          e.preventDefault()
         try {
             if (
-                user.lastName === "" || user.firstName === "" ||
-                user.email === "" || user.username === "" ||
-                user.password === ""
+                user.LastName === "" || user.Name === "" ||
+                user.Email === "" || user.UserName === "" 
+               
             ) {
                 console.error("Todos los campos son requeridos");
             }
             else {
-                delete user.id;
-                await api.post("/Users/Create", user)             
-                    .then(res => setData(data.concat(res.data.data))
+                delete user.Id;
+                await api.post("/Users", user)             
+                    .then(
+                        res => console.log(data.concat(res.data)
+                        )
                     )
 
                 alert("Registro exitoso");
@@ -66,19 +67,19 @@ console.log(user2);
         e.preventDefault()
         setDataToEdit(false)
        // navigate("/home")
-        console.log(data, user);
-        let dataAux = data
-         await api.put("/Users/"+ user.id, user)
+       
+        // let dataAux = data
+         await api.put("/Users?Id="+ user.UserId, user)
            .then(res => {
-            console.log(res.data.data);
-             dataAux.map(elem => {
-                 //console.log(elem.id, user.id);
-               if (elem.id === user.id) {         
-                 elem.firstName = res.data.data.firstName;
-                 elem.LastName = res.data.data.LastName;
-                 elem.email = res.data.data.email;
-                 elem.username = res.data.data.username;
-                 elem.password = res.data.data.password   
+        
+             data.map(elem => {
+                 console.log(elem.UserId, user.UserId);
+               if (elem.UserId === user.UserId) {         
+                 elem.Name = res.data.Name;
+                 elem.LastName = res.data.LastName;
+                 elem.Email = res.data.Email;
+                 elem.UserName = res.data.UserName;
+                 elem.UserId = res.data.UserId   
                }
              })
              navigate("/");
@@ -109,12 +110,12 @@ console.log(user2);
                         required
                         type="text"
                         className="form-control"
-                        name="username"
-                        value={user.username}
+                        name="UserName"
+                        value={user.UserName}
                         onChange={handleChange2}
                     />
                     <br />
-                    <label>Contraseña: </label>
+                    {/* <label>UserId: </label>
                     <br />
                     <input
                         required
@@ -124,15 +125,15 @@ console.log(user2);
                         value={user.password}
                         onChange={handleChange2}
                     />
-                    <br />
+                    <br /> */}
                     <label>Correo: </label>
                     <br />
                     <input
                         required
                         type="email"
                         className="form-control"
-                        name="email"
-                        value={user.email}
+                        name="Email"
+                        value={user.Email}
                         onChange={handleChange2}
                     />
                     <br />
@@ -143,8 +144,8 @@ console.log(user2);
                         required
                         type="text"
                         className="form-control"
-                        name="firstName"
-                        value={user.firstName}
+                        name="Name"
+                        value={user.Name}
                         onChange={handleChange2}
                     />
                     <br />
@@ -154,8 +155,8 @@ console.log(user2);
                         required
                         type="text"
                         className="form-control"
-                        name="lastName"
-                        value={user.lastName}
+                        name="LastName"
+                        value={user.LastName}
                         onChange={handleChange2}
                     />
                     <br />
@@ -180,7 +181,18 @@ console.log(user2);
                         type="text"
                         className="form-control"
                         name="id"
-                        value={user && user.id}
+                        value={user && user.Id}
+                        
+                    />
+                         <br />
+                         <label>UserId: </label>
+                    <br />
+                    <input
+                        readOnly
+                        type="text"
+                        className="form-control"
+                        name="UserId"
+                        value={user && user.UserId}
                         
                     />
                          <br />
@@ -190,14 +202,14 @@ console.log(user2);
                        
                         type="text"
                         className="form-control"
-                        name="username"
-                        value={user && user.username}
+                        name="UserName"
+                        value={user && user.UserName}
                         onChange={handleChange2}
                     />
                     <br />
                     <label>Contraseña: </label>
                     <br />
-                    <input
+                    {/* <input
                       
                         type="password"
                         className="form-control"
@@ -205,15 +217,15 @@ console.log(user2);
                         value={user && user.password}
                         onChange={handleChange2}
                     />
-                    <br />
+                    <br /> */}
                     <label>Correo: </label>
                     <br />
                     <input
                     
                         type="email"
                         className="form-control"
-                        name="email"
-                        value={user && user.email}
+                        name="Email"
+                        value={user && user.Email}
                         onChange={handleChange2}
                     />
                     <br />
@@ -224,8 +236,8 @@ console.log(user2);
                       
                         type="text"
                         className="form-control"
-                        name="firstName"
-                        value={user && user.firstName}
+                        name="Name"
+                        value={user && user.Name}
                         onChange={handleChange2}
                     />
                     <br />
@@ -235,14 +247,14 @@ console.log(user2);
                     
                         type="text"
                         className="form-control"
-                        name="lastName"
-                        value={user && user.lastName}
+                        name="LastName"
+                        value={user && user.LastName}
                         onChange={handleChange2}
                     />
                     <br />
 
 
-                    <button className="btn btn-success" onClick={peticionPut} >Actualizar</button>
+                    <button className="btn btn-success">Actualizar</button>
                 </div>
             </div>
         </form>

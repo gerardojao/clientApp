@@ -6,7 +6,6 @@ import Welcome from '../Pages/Welcome';
 import Home from '../Pages/Home';
 import About from '../Pages/About';
 
-
 function App() {
     const [dataToEdit, setDataToEdit] = useState(null)
     const [user, setUser] = useState({
@@ -16,12 +15,14 @@ function App() {
         email:"",
         username:"",
         password:""
-    });
+    }); 
+    
+
     return (
         <BrowserRouter >
             <Routes>
                 <Route path="/" element={<Home dataToEdit={dataToEdit} setDataToEdit={setDataToEdit} user={user} setUser={setUser}/>} />
-                <Route path="/login" element={<Login />} />
+                <Route path="/login" element={<Login dataToEdit={dataToEdit} setDataToEdit={setDataToEdit}/>} />
                 <Route path='/register' element={<Register dataToEdit={dataToEdit} setDataToEdit={setDataToEdit} user={user} setUser={setUser} />} />
                 <Route path='/welcome' element={<Welcome />} />
                 <Route path='/about' element={<About />} />
