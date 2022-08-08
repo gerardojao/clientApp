@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import "../css/Login.css"
 import axios from "axios"
 import { supabase } from '../supabase/client';
+import Navbar from '../Components/Navbar';
 
 //import Cookies from 'universal-cookie/es6';
 const Login = ({dataToEdit, setDataToEdit}) => {
@@ -74,7 +75,10 @@ const Login = ({dataToEdit, setDataToEdit}) => {
     }, [navigate])
 
     return (
+        <div>
+            {<Navbar />}
         <div className="containerPrincipal" >
+         
             <div className="containerLogin">
                 <form onSubmit={iniciarSesion} className="form-group">
                 <label>Email: </label>
@@ -115,6 +119,7 @@ const Login = ({dataToEdit, setDataToEdit}) => {
                     <button className="btn btn-success" onClick={() => registro()}>Registrate</button>
                 </form>
             </div>
+        </div>
         </div>
     )
 };

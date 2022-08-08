@@ -1,0 +1,32 @@
+nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 5px 10px 30px rgba(0, 0, 0, 0.336);
+    position: fixed;
+    left: 0;
+    top: 0;
+    width:100%;
+    z-index: 1;
+    background-color: #0f0f0f;
+    padding: 1rem 1rem 1rem 1.5rem;
+    }
+    
+  
+    .active{
+    color:#fff;
+    list-style: none;
+    text-align: center;
+    }
+    .containerimg{
+        width: 80px;
+        height: 80px;
+        background-color: #fff;
+        border-radius: 50%;
+    }
+    
+    
+    
+ 
+  
+   

@@ -5,6 +5,7 @@ import Login from '../Pages/Login';
 import Welcome from '../Pages/Welcome';
 import Home from '../Pages/Home';
 import About from '../Pages/About';
+import Navbar from "../Components/Navbar"
 
 function App() {
     const [dataToEdit, setDataToEdit] = useState(null)
@@ -20,6 +21,7 @@ function App() {
 
     return (
         <BrowserRouter >
+        <Navbar />
             <Routes>
                 <Route path="/" element={<Home dataToEdit={dataToEdit} setDataToEdit={setDataToEdit} user={user} setUser={setUser}/>} />
                 <Route path="/login" element={<Login dataToEdit={dataToEdit} setDataToEdit={setDataToEdit}/>} />
