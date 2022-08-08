@@ -17,7 +17,7 @@ export default function Home({dataToEdit, setDataToEdit , user, setUser}) {
     const navigate = useNavigate();
 
     const peticionGet = async () => {
-        await api.get("/Users")
+        await api.get("/Users/")
             .then(res => {
                 setLoading(false)
                 setData(res.data)
