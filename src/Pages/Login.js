@@ -6,10 +6,10 @@ import "../css/Login.css"
 import axios from "axios"
 import { supabase } from '../supabase/client';
 
-import Cookies from 'universal-cookie/es6';
+//import Cookies from 'universal-cookie/es6';
 const Login = ({dataToEdit, setDataToEdit}) => {
-    const url = "https://localhost:44300/api/Users"
-    const cookies = new Cookies()
+    //const url = "https://localhost:44300/api/Users"
+    //const cookies = new Cookies()
     const navigate = useNavigate();
 
     // const [form, setForm] = useState({
@@ -55,6 +55,7 @@ const Login = ({dataToEdit, setDataToEdit}) => {
                           await supabase.auth.signIn({
                                  email
                                         })
+                                        alert("Código enviado al correo: "+ email)
                     } catch (error) {
                         console.error(error)
                     }
