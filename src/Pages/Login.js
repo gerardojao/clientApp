@@ -5,13 +5,26 @@ import { useNavigate } from 'react-router-dom'
 import "../css/Login.css"
 import axios from "axios"
 import { supabase } from '../supabase/client';
+import Swal from 'sweetalert2'
 
 
-//import Cookies from 'universal-cookie/es6';
+
 const Login = ({dataToEdit, setDataToEdit}) => {
     //const url = "https://localhost:44300/api/Users"
     //const cookies = new Cookies()
     const navigate = useNavigate();
+
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
 
     // const [form, setForm] = useState({
     //     email: "",
@@ -59,7 +72,10 @@ const Login = ({dataToEdit, setDataToEdit}) => {
              {
                     redirectTo:"https://userlogin.vercel.app/home"
              })
-             alert("Código enviado al correo: "+ email)
+           Toast.fire({
+            icon: 'success',
+            title: 'Email sent successfully'
+            })
          } catch (error) {
               console.error(error)
          }
