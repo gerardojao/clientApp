@@ -6,6 +6,7 @@ import img from "../images/logogerardo.svg"
 const Navbar = () => {
   return (
     <nav>
+        <div className="containerMain">
    <div className="containerimg">
     <a target="_blank" href="https://gerardojao.vercel.app/"><img className="logo" src={img} alt="apple" /></a>
      
@@ -16,7 +17,7 @@ const Navbar = () => {
 <h4 className="active">App FullStack made with React.Js, .NET, MongoDB Atlas, Supabase</h4>
 
    
-
+</div>
 </nav>
   )
 }

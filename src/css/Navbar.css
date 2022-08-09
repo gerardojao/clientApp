@@ -10,13 +10,22 @@ nav{
     z-index: 1;
     background-color: #0f0f0f;
     padding: 1rem 1rem 1rem 1.5rem;
+
     }
-    
+    .containerMain{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    }
+
   
     .active{
     color:#fff;
     list-style: none;
     text-align: center;
+    margin-left:20px;
     }
     .containerimg{
         width: 80px;
