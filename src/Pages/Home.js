@@ -115,11 +115,11 @@ export default function Home({dataToEdit, setDataToEdit , user, setUser}) {
           :<table style={{"textAlign":"center"}} className="table table-bordered">
                 <thead >
                     <tr>
-                        <th>ID</th>
-                        <th>NAME</th>
-                        <th>LAST NAME</th>
+                        {/* <th>ID</th> */}
+                        <th className="responsive">NAME</th>
+                        <th className="responsive">LAST NAME</th>
                         <th>EMAIL</th>
-                        <th>USERNAME</th>
+                        <th className="responsive">USERNAME</th>
                         <th>ACCIONES</th>
                     </tr>
                 </thead>
@@ -127,11 +127,11 @@ export default function Home({dataToEdit, setDataToEdit , user, setUser}) {
                     {results.map(user => (
                      
                         <tr key={user.Id}>
-                            <td>{user.Id}</td>
-                            <td>{user.Name}</td>
-                            <td>{user.LastName}</td>
-                            <td>{user.Email}</td>
-                            <td>{user.UserName}</td>
+                            {/* <td>{user.Id}</td> */}
+                            <td className="responsive">{user.Name}</td>
+                            <td className="responsive">{user.LastName}</td>
+                            <td className="responsive">{user.Email}</td>
+                            <td >{user.UserName}</td>
 
                              <td>
                                 <button

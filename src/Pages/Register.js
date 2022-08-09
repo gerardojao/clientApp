@@ -74,7 +74,8 @@ const Register = ({dataToEdit, setDataToEdit, user, setUser}) => {
         
              data.map(elem => {
                  console.log(elem.UserId, user.UserId);
-               if (elem.UserId === user.UserId) {         
+               if (elem.UserId === user.UserId) {   
+                elem.Id = res.data.Id;      
                  elem.Name = res.data.Name;
                  elem.LastName = res.data.LastName;
                  elem.Email = res.data.Email;

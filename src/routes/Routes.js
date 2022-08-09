@@ -4,7 +4,7 @@ import Register from '../Pages/Register';
 import Login from '../Pages/Login';
 import Welcome from '../Pages/Welcome';
 import Home from '../Pages/Home';
-import About from '../Pages/About';
+import Footer from "../Components/Footer"
 import Navbar from "../Components/Navbar"
 
 function App() {
@@ -27,9 +27,10 @@ function App() {
                 <Route path="/login" element={<Login dataToEdit={dataToEdit} setDataToEdit={setDataToEdit}/>} />
                 <Route path='/register' element={<Register dataToEdit={dataToEdit} setDataToEdit={setDataToEdit} user={user} setUser={setUser} />} />
                 <Route path='/welcome' element={<Welcome />} />
-                <Route path='/about' element={<About />} />
+               
 
             </Routes>
+        <Footer />
         </BrowserRouter>
     );
 }
